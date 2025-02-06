@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokezuka/extensions/context.dart';
 import 'package:pokezuka/providers/pokemon_provider.dart';
+import 'package:pokezuka/widgets/locale_select.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class PokemonsScreen extends ConsumerWidget {
@@ -10,7 +12,30 @@ class PokemonsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ポケモン図鑑'),
+        title: Text(context.l10n.homeTitle),
+        actions: [
+          IconButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text(context.l10n.settings),
+                      content: LocaleSelect(),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text(context.l10n.close),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              icon: Icon(Icons.settings)),
+        ],
       ),
       body: FutureBuilder(
         future: ref.watch(pokemonsProvider.future),
@@ -31,9 +56,8 @@ class PokemonsScreen extends ConsumerWidget {
             itemCount: pokemons.length,
             itemBuilder: (context, index) {
               final pokemon = pokemons[index];
-              return ListTile(
-                title: Text(pokemon.name),
-                subtitle: Text(pokemon.url),
+              return PokemonListTile(
+                name: pokemon.name,
               );
             },
           );
@@ -50,13 +74,40 @@ class PokemonListTile extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final pokemon = ref.watch(pokemonProvider(name));
-    return Skeletonizer(
-      enabled: pokemon == null,
-      child: ListTile(
-        title: Text(pokemon!.name),
-        subtitle: Text(pokemon.url),
-      ),
+    return FutureBuilder(
+      future: ref.watch(pokemonProvider(name).future),
+      builder: (context, snapshot) {
+        final pokemon = snapshot.data;
+        return Skeletonizer(
+          enabled: snapshot.connectionState != ConnectionState.done ||
+              pokemon == null,
+          child: ListTile(
+            title: PokemonName(name: name),
+            subtitle: Text(pokemon?.id.toString() ?? 'This is a subtitle'),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class PokemonName extends ConsumerWidget {
+  const PokemonName({super.key, required this.name});
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    return FutureBuilder(
+      future: ref.watch(nameProvider(name).future),
+      builder: (context, snapshot) {
+        final name = snapshot.data;
+        return Skeletonizer(
+          enabled:
+              snapshot.connectionState != ConnectionState.done || name == null,
+          child: Text(name ?? 'This is a name'),
+        );
+      },
     );
   }
 }

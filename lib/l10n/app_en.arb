@@ -1,0 +1,19 @@
+{
+    "@@locale": "en",
+    "localeDisplayName": "English",
+    "@localeDisplayName": {
+        "description": "The display name of the locale"
+    },
+    "homeTitle": "Pokédex",
+    "@homeTitle": {
+        "description": "The title of the home page"
+    },
+    "settings": "Settings",
+    "@settings": {
+        "description": "The title of the settings page"
+    },
+    "close": "Close",
+    "@close": {
+        "description": "The text of the close button"
+    }
+}
