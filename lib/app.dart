@@ -13,6 +13,7 @@ class App extends ConsumerWidget {
     return MaterialApp(
       title: 'ポケモン図鑑',
       theme: ThemeData(
+        primarySwatch: Colors.red,
         useMaterial3: false,
       ),
       debugShowCheckedModeBanner: false,

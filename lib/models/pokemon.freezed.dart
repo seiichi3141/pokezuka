@@ -886,6 +886,7 @@ mixin _$Species {
   @JsonKey(name: 'forms_switchable')
   bool get formsWwitchable => throw _privateConstructorUsedError;
   List<Name> get names => throw _privateConstructorUsedError;
+  List<Genus> get genera => throw _privateConstructorUsedError;
 
   /// Serializes this Species to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -914,7 +915,8 @@ abstract class $SpeciesCopyWith<$Res> {
       @JsonKey(name: 'hatch_counter') int hatchCounter,
       @JsonKey(name: 'has_gender_differences') bool hasGenderDifferences,
       @JsonKey(name: 'forms_switchable') bool formsWwitchable,
-      List<Name> names});
+      List<Name> names,
+      List<Genus> genera});
 }
 
 /// @nodoc
@@ -945,6 +947,7 @@ class _$SpeciesCopyWithImpl<$Res, $Val extends Species>
     Object? hasGenderDifferences = null,
     Object? formsWwitchable = null,
     Object? names = null,
+    Object? genera = null,
   }) {
     return _then(_value.copyWith(
       id: null == id
@@ -999,6 +1002,10 @@ class _$SpeciesCopyWithImpl<$Res, $Val extends Species>
           ? _value.names
           : names // ignore: cast_nullable_to_non_nullable
               as List<Name>,
+      genera: null == genera
+          ? _value.genera
+          : genera // ignore: cast_nullable_to_non_nullable
+              as List<Genus>,
     ) as $Val);
   }
 }
@@ -1023,7 +1030,8 @@ abstract class _$$SpeciesImplCopyWith<$Res> implements $SpeciesCopyWith<$Res> {
       @JsonKey(name: 'hatch_counter') int hatchCounter,
       @JsonKey(name: 'has_gender_differences') bool hasGenderDifferences,
       @JsonKey(name: 'forms_switchable') bool formsWwitchable,
-      List<Name> names});
+      List<Name> names,
+      List<Genus> genera});
 }
 
 /// @nodoc
@@ -1052,6 +1060,7 @@ class __$$SpeciesImplCopyWithImpl<$Res>
     Object? hasGenderDifferences = null,
     Object? formsWwitchable = null,
     Object? names = null,
+    Object? genera = null,
   }) {
     return _then(_$SpeciesImpl(
       id: null == id
@@ -1106,6 +1115,10 @@ class __$$SpeciesImplCopyWithImpl<$Res>
           ? _value._names
           : names // ignore: cast_nullable_to_non_nullable
               as List<Name>,
+      genera: null == genera
+          ? _value._genera
+          : genera // ignore: cast_nullable_to_non_nullable
+              as List<Genus>,
     ));
   }
 }
@@ -1127,8 +1140,10 @@ class _$SpeciesImpl implements _Species {
       @JsonKey(name: 'has_gender_differences')
       required this.hasGenderDifferences,
       @JsonKey(name: 'forms_switchable') required this.formsWwitchable,
-      required final List<Name> names})
-      : _names = names;
+      required final List<Name> names,
+      required final List<Genus> genera})
+      : _names = names,
+        _genera = genera;
 
   factory _$SpeciesImpl.fromJson(Map<String, dynamic> json) =>
       _$$SpeciesImplFromJson(json);
@@ -1174,9 +1189,17 @@ class _$SpeciesImpl implements _Species {
     return EqualUnmodifiableListView(_names);
   }
 
+  final List<Genus> _genera;
+  @override
+  List<Genus> get genera {
+    if (_genera is EqualUnmodifiableListView) return _genera;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_genera);
+  }
+
   @override
   String toString() {
-    return 'Species(id: $id, name: $name, order: $order, genderRate: $genderRate, captureRate: $captureRate, baseHappiness: $baseHappiness, isBaby: $isBaby, isLegendary: $isLegendary, isMythical: $isMythical, hatchCounter: $hatchCounter, hasGenderDifferences: $hasGenderDifferences, formsWwitchable: $formsWwitchable, names: $names)';
+    return 'Species(id: $id, name: $name, order: $order, genderRate: $genderRate, captureRate: $captureRate, baseHappiness: $baseHappiness, isBaby: $isBaby, isLegendary: $isLegendary, isMythical: $isMythical, hatchCounter: $hatchCounter, hasGenderDifferences: $hasGenderDifferences, formsWwitchable: $formsWwitchable, names: $names, genera: $genera)';
   }
 
   @override
@@ -1204,7 +1227,8 @@ class _$SpeciesImpl implements _Species {
                 other.hasGenderDifferences == hasGenderDifferences) &&
             (identical(other.formsWwitchable, formsWwitchable) ||
                 other.formsWwitchable == formsWwitchable) &&
-            const DeepCollectionEquality().equals(other._names, _names));
+            const DeepCollectionEquality().equals(other._names, _names) &&
+            const DeepCollectionEquality().equals(other._genera, _genera));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1223,7 +1247,8 @@ class _$SpeciesImpl implements _Species {
       hatchCounter,
       hasGenderDifferences,
       formsWwitchable,
-      const DeepCollectionEquality().hash(_names));
+      const DeepCollectionEquality().hash(_names),
+      const DeepCollectionEquality().hash(_genera));
 
   /// Create a copy of Species
   /// with the given fields replaced by the non-null parameter values.
@@ -1256,7 +1281,8 @@ abstract class _Species implements Species {
       @JsonKey(name: 'has_gender_differences')
       required final bool hasGenderDifferences,
       @JsonKey(name: 'forms_switchable') required final bool formsWwitchable,
-      required final List<Name> names}) = _$SpeciesImpl;
+      required final List<Name> names,
+      required final List<Genus> genera}) = _$SpeciesImpl;
 
   factory _Species.fromJson(Map<String, dynamic> json) = _$SpeciesImpl.fromJson;
 
@@ -1295,6 +1321,8 @@ abstract class _Species implements Species {
   bool get formsWwitchable;
   @override
   List<Name> get names;
+  @override
+  List<Genus> get genera;
 
   /// Create a copy of Species
   /// with the given fields replaced by the non-null parameter values.
@@ -1479,5 +1507,184 @@ abstract class _Name implements Name {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$NameImplCopyWith<_$NameImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Genus _$GenusFromJson(Map<String, dynamic> json) {
+  return _Genus.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Genus {
+  String get genus => throw _privateConstructorUsedError;
+  PokemonUrl get language => throw _privateConstructorUsedError;
+
+  /// Serializes this Genus to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $GenusCopyWith<Genus> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $GenusCopyWith<$Res> {
+  factory $GenusCopyWith(Genus value, $Res Function(Genus) then) =
+      _$GenusCopyWithImpl<$Res, Genus>;
+  @useResult
+  $Res call({String genus, PokemonUrl language});
+
+  $PokemonUrlCopyWith<$Res> get language;
+}
+
+/// @nodoc
+class _$GenusCopyWithImpl<$Res, $Val extends Genus>
+    implements $GenusCopyWith<$Res> {
+  _$GenusCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? genus = null,
+    Object? language = null,
+  }) {
+    return _then(_value.copyWith(
+      genus: null == genus
+          ? _value.genus
+          : genus // ignore: cast_nullable_to_non_nullable
+              as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as PokemonUrl,
+    ) as $Val);
+  }
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $PokemonUrlCopyWith<$Res> get language {
+    return $PokemonUrlCopyWith<$Res>(_value.language, (value) {
+      return _then(_value.copyWith(language: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$GenusImplCopyWith<$Res> implements $GenusCopyWith<$Res> {
+  factory _$$GenusImplCopyWith(
+          _$GenusImpl value, $Res Function(_$GenusImpl) then) =
+      __$$GenusImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String genus, PokemonUrl language});
+
+  @override
+  $PokemonUrlCopyWith<$Res> get language;
+}
+
+/// @nodoc
+class __$$GenusImplCopyWithImpl<$Res>
+    extends _$GenusCopyWithImpl<$Res, _$GenusImpl>
+    implements _$$GenusImplCopyWith<$Res> {
+  __$$GenusImplCopyWithImpl(
+      _$GenusImpl _value, $Res Function(_$GenusImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? genus = null,
+    Object? language = null,
+  }) {
+    return _then(_$GenusImpl(
+      genus: null == genus
+          ? _value.genus
+          : genus // ignore: cast_nullable_to_non_nullable
+              as String,
+      language: null == language
+          ? _value.language
+          : language // ignore: cast_nullable_to_non_nullable
+              as PokemonUrl,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GenusImpl implements _Genus {
+  const _$GenusImpl({required this.genus, required this.language});
+
+  factory _$GenusImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GenusImplFromJson(json);
+
+  @override
+  final String genus;
+  @override
+  final PokemonUrl language;
+
+  @override
+  String toString() {
+    return 'Genus(genus: $genus, language: $language)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GenusImpl &&
+            (identical(other.genus, genus) || other.genus == genus) &&
+            (identical(other.language, language) ||
+                other.language == language));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, genus, language);
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GenusImplCopyWith<_$GenusImpl> get copyWith =>
+      __$$GenusImplCopyWithImpl<_$GenusImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GenusImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Genus implements Genus {
+  const factory _Genus(
+      {required final String genus,
+      required final PokemonUrl language}) = _$GenusImpl;
+
+  factory _Genus.fromJson(Map<String, dynamic> json) = _$GenusImpl.fromJson;
+
+  @override
+  String get genus;
+  @override
+  PokemonUrl get language;
+
+  /// Create a copy of Genus
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$GenusImplCopyWith<_$GenusImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

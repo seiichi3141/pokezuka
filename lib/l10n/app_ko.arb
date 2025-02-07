@@ -2,18 +2,18 @@
     "@@locale": "ko",
     "localeDisplayName": "한국어",
     "@localeDisplayName": {
-        "description": "The display name of the locale"
+        "description": "화면에 표시되는 언어 이름"
     },
     "appName": "포켓몬 도감",
     "@appName": {
-        "description": "The title of the Application name"
+        "description": "애플리케이션 이름의 제목"
     },
     "settings": "설정",
     "@settings": {
-        "description": "The title of the settings page"
+        "description": "설정 화면의 제목"
     },
     "close": "닫기",
     "@close": {
-        "description": "The text of the close button"
+        "description": "닫기 버튼의 텍스트"
     }
 }

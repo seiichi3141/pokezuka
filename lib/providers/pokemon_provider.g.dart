@@ -172,6 +172,152 @@ class _PokemonProviderElement extends AutoDisposeFutureProviderElement<Pokemon>
   String get id => (origin as PokemonProvider).id;
 }
 
+String _$pokemonLocaleHash() => r'9498f7a6c3afdee096e36e135a0723a9a73c8c5f';
+
+/// See also [pokemonLocale].
+@ProviderFor(pokemonLocale)
+final pokemonLocaleProvider = AutoDisposeProvider<String>.internal(
+  pokemonLocale,
+  name: r'pokemonLocaleProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$pokemonLocaleHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+typedef PokemonLocaleRef = AutoDisposeProviderRef<String>;
+String _$indexHash() => r'35face69bd3ccf7e58cd8452b6d95d0e1694d615';
+
+/// See also [index].
+@ProviderFor(index)
+const indexProvider = IndexFamily();
+
+/// See also [index].
+class IndexFamily extends Family<AsyncValue<int?>> {
+  /// See also [index].
+  const IndexFamily();
+
+  /// See also [index].
+  IndexProvider call(
+    String id,
+  ) {
+    return IndexProvider(
+      id,
+    );
+  }
+
+  @override
+  IndexProvider getProviderOverride(
+    covariant IndexProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'indexProvider';
+}
+
+/// See also [index].
+class IndexProvider extends AutoDisposeFutureProvider<int?> {
+  /// See also [index].
+  IndexProvider(
+    String id,
+  ) : this._internal(
+          (ref) => index(
+            ref as IndexRef,
+            id,
+          ),
+          from: indexProvider,
+          name: r'indexProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$indexHash,
+          dependencies: IndexFamily._dependencies,
+          allTransitiveDependencies: IndexFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  IndexProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<int?> Function(IndexRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: IndexProvider._internal(
+        (ref) => create(ref as IndexRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<int?> createElement() {
+    return _IndexProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is IndexProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin IndexRef on AutoDisposeFutureProviderRef<int?> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _IndexProviderElement extends AutoDisposeFutureProviderElement<int?>
+    with IndexRef {
+  _IndexProviderElement(super.provider);
+
+  @override
+  String get id => (origin as IndexProvider).id;
+}
+
 String _$speciesHash() => r'55b5e2df99c3a50d564a5f1cbd85ede3bbebe01d';
 
 /// See also [species].
@@ -559,7 +705,7 @@ class _NamesProviderElement extends AutoDisposeFutureProviderElement<List<Name>>
   String get id => (origin as NamesProvider).id;
 }
 
-String _$nameHash() => r'e21911d112cd4a4aa73b9e74ee16b88249306b1b';
+String _$nameHash() => r'80d45136366f34d5bb3c3f94299b8b152db06f2e';
 
 /// See also [name].
 @ProviderFor(name)
@@ -684,6 +830,264 @@ class _NameProviderElement extends AutoDisposeFutureProviderElement<String>
 
   @override
   String get id => (origin as NameProvider).id;
+}
+
+String _$generaHash() => r'b4dbc69f92b7230ed2e978e6ad25d12f47b802f7';
+
+/// See also [genera].
+@ProviderFor(genera)
+const generaProvider = GeneraFamily();
+
+/// See also [genera].
+class GeneraFamily extends Family<AsyncValue<List<Genus>>> {
+  /// See also [genera].
+  const GeneraFamily();
+
+  /// See also [genera].
+  GeneraProvider call(
+    String id,
+  ) {
+    return GeneraProvider(
+      id,
+    );
+  }
+
+  @override
+  GeneraProvider getProviderOverride(
+    covariant GeneraProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'generaProvider';
+}
+
+/// See also [genera].
+class GeneraProvider extends AutoDisposeFutureProvider<List<Genus>> {
+  /// See also [genera].
+  GeneraProvider(
+    String id,
+  ) : this._internal(
+          (ref) => genera(
+            ref as GeneraRef,
+            id,
+          ),
+          from: generaProvider,
+          name: r'generaProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$generaHash,
+          dependencies: GeneraFamily._dependencies,
+          allTransitiveDependencies: GeneraFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  GeneraProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<Genus>> Function(GeneraRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: GeneraProvider._internal(
+        (ref) => create(ref as GeneraRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<Genus>> createElement() {
+    return _GeneraProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is GeneraProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin GeneraRef on AutoDisposeFutureProviderRef<List<Genus>> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _GeneraProviderElement
+    extends AutoDisposeFutureProviderElement<List<Genus>> with GeneraRef {
+  _GeneraProviderElement(super.provider);
+
+  @override
+  String get id => (origin as GeneraProvider).id;
+}
+
+String _$genusHash() => r'394f1a24a39c378fdc9cec66171fd59343749bb1';
+
+/// See also [genus].
+@ProviderFor(genus)
+const genusProvider = GenusFamily();
+
+/// See also [genus].
+class GenusFamily extends Family<AsyncValue<String>> {
+  /// See also [genus].
+  const GenusFamily();
+
+  /// See also [genus].
+  GenusProvider call(
+    String id,
+  ) {
+    return GenusProvider(
+      id,
+    );
+  }
+
+  @override
+  GenusProvider getProviderOverride(
+    covariant GenusProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'genusProvider';
+}
+
+/// See also [genus].
+class GenusProvider extends AutoDisposeFutureProvider<String> {
+  /// See also [genus].
+  GenusProvider(
+    String id,
+  ) : this._internal(
+          (ref) => genus(
+            ref as GenusRef,
+            id,
+          ),
+          from: genusProvider,
+          name: r'genusProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$genusHash,
+          dependencies: GenusFamily._dependencies,
+          allTransitiveDependencies: GenusFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  GenusProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<String> Function(GenusRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: GenusProvider._internal(
+        (ref) => create(ref as GenusRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<String> createElement() {
+    return _GenusProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is GenusProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin GenusRef on AutoDisposeFutureProviderRef<String> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _GenusProviderElement extends AutoDisposeFutureProviderElement<String>
+    with GenusRef {
+  _GenusProviderElement(super.provider);
+
+  @override
+  String get id => (origin as GenusProvider).id;
 }
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

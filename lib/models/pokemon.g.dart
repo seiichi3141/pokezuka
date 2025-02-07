@@ -85,6 +85,9 @@ _$SpeciesImpl _$$SpeciesImplFromJson(Map<String, dynamic> json) =>
       names: (json['names'] as List<dynamic>)
           .map((e) => Name.fromJson(e as Map<String, dynamic>))
           .toList(),
+      genera: (json['genera'] as List<dynamic>)
+          .map((e) => Genus.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SpeciesImplToJson(_$SpeciesImpl instance) =>
@@ -102,6 +105,7 @@ Map<String, dynamic> _$$SpeciesImplToJson(_$SpeciesImpl instance) =>
       'has_gender_differences': instance.hasGenderDifferences,
       'forms_switchable': instance.formsWwitchable,
       'names': instance.names,
+      'genera': instance.genera,
     };
 
 _$NameImpl _$$NameImplFromJson(Map<String, dynamic> json) => _$NameImpl(
@@ -112,5 +116,16 @@ _$NameImpl _$$NameImplFromJson(Map<String, dynamic> json) => _$NameImpl(
 Map<String, dynamic> _$$NameImplToJson(_$NameImpl instance) =>
     <String, dynamic>{
       'name': instance.name,
+      'language': instance.language,
+    };
+
+_$GenusImpl _$$GenusImplFromJson(Map<String, dynamic> json) => _$GenusImpl(
+      genus: json['genus'] as String,
+      language: PokemonUrl.fromJson(json['language'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$GenusImplToJson(_$GenusImpl instance) =>
+    <String, dynamic>{
+      'genus': instance.genus,
       'language': instance.language,
     };

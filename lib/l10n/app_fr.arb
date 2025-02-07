@@ -1,0 +1,19 @@
+{
+    "@@locale": "fr",
+    "localeDisplayName": "Français",
+    "@localeDisplayName": {
+        "description": "Nom de la langue affiché à l'écran"
+    },
+    "appName": "Pokédex",
+    "@appName": {
+        "description": "Titre du nom de l'application"
+    },
+    "settings": "Paramètres",
+    "@settings": {
+        "description": "Titre de l'écran des paramètres"
+    },
+    "close": "Fermer",
+    "@close": {
+        "description": "Texte du bouton de fermeture"
+    }
+}

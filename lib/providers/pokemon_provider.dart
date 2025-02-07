@@ -26,6 +26,25 @@ Future<Pokemon> pokemon(Ref ref, String id) async {
 }
 
 @riverpod
+String pokemonLocale(Ref ref) {
+  final locale = ref.watch(localeProvider);
+  switch (locale) {
+    case 'ja':
+      return 'ja-Hrkt';
+    case 'zh':
+      return 'zh-Hant';
+  }
+  return locale;
+}
+
+@riverpod
+Future<int?> index(Ref ref, String id) async {
+  return ref.watch(
+    pokemonProvider(id).future.select((value) async => (await value).id),
+  );
+}
+
+@riverpod
 Future<Species> species(Ref ref, String id) async {
   final dio = ref.watch(dioProvider);
   final pokemon = await ref.watch(pokemonProvider(id).future);
@@ -50,10 +69,28 @@ Future<List<Name>> names(Ref ref, String id) async {
 @riverpod
 Future<String> name(Ref ref, String id) async {
   final names = await ref.watch(namesProvider(id).future);
-  final locale = ref.watch(localeProvider);
+  final locale = ref.watch(pokemonLocaleProvider);
   try {
     return names.firstWhere((name) => name.language.name == locale).name;
   } catch (e) {
     return names.first.name;
+  }
+}
+
+@riverpod
+Future<List<Genus>> genera(Ref ref, String id) async {
+  return ref.watch(
+    speciesProvider(id).future.select((value) async => (await value).genera),
+  );
+}
+
+@riverpod
+Future<String> genus(Ref ref, String id) async {
+  final genera = await ref.watch(generaProvider(id).future);
+  final locale = ref.watch(pokemonLocaleProvider);
+  try {
+    return genera.firstWhere((genus) => genus.language.name == locale).genus;
+  } catch (e) {
+    return genera.first.genus;
   }
 }

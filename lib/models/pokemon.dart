@@ -65,6 +65,7 @@ class Species with _$Species {
     @JsonKey(name: 'has_gender_differences') required bool hasGenderDifferences,
     @JsonKey(name: 'forms_switchable') required bool formsWwitchable,
     required List<Name> names,
+    required List<Genus> genera,
   }) = _Species;
 
   factory Species.fromJson(Map<String, dynamic> json) =>
@@ -79,4 +80,14 @@ class Name with _$Name {
   }) = _Name;
 
   factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
+}
+
+@freezed
+class Genus with _$Genus {
+  const factory Genus({
+    required String genus,
+    required PokemonUrl language,
+  }) = _Genus;
+
+  factory Genus.fromJson(Map<String, dynamic> json) => _$GenusFromJson(json);
 }
