@@ -301,6 +301,135 @@ class _SpeciesProviderElement extends AutoDisposeFutureProviderElement<Species>
   String get id => (origin as SpeciesProvider).id;
 }
 
+String _$spritesHash() => r'a3d3fd4136c900bc21893c7b17e2f79c5da26222';
+
+/// See also [sprites].
+@ProviderFor(sprites)
+const spritesProvider = SpritesFamily();
+
+/// See also [sprites].
+class SpritesFamily extends Family<AsyncValue<Sprites>> {
+  /// See also [sprites].
+  const SpritesFamily();
+
+  /// See also [sprites].
+  SpritesProvider call(
+    String id,
+  ) {
+    return SpritesProvider(
+      id,
+    );
+  }
+
+  @override
+  SpritesProvider getProviderOverride(
+    covariant SpritesProvider provider,
+  ) {
+    return call(
+      provider.id,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'spritesProvider';
+}
+
+/// See also [sprites].
+class SpritesProvider extends AutoDisposeFutureProvider<Sprites> {
+  /// See also [sprites].
+  SpritesProvider(
+    String id,
+  ) : this._internal(
+          (ref) => sprites(
+            ref as SpritesRef,
+            id,
+          ),
+          from: spritesProvider,
+          name: r'spritesProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$spritesHash,
+          dependencies: SpritesFamily._dependencies,
+          allTransitiveDependencies: SpritesFamily._allTransitiveDependencies,
+          id: id,
+        );
+
+  SpritesProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.id,
+  }) : super.internal();
+
+  final String id;
+
+  @override
+  Override overrideWith(
+    FutureOr<Sprites> Function(SpritesRef provider) create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: SpritesProvider._internal(
+        (ref) => create(ref as SpritesRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        id: id,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<Sprites> createElement() {
+    return _SpritesProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is SpritesProvider && other.id == id;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, id.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+@Deprecated('Will be removed in 3.0. Use Ref instead')
+// ignore: unused_element
+mixin SpritesRef on AutoDisposeFutureProviderRef<Sprites> {
+  /// The parameter `id` of this provider.
+  String get id;
+}
+
+class _SpritesProviderElement extends AutoDisposeFutureProviderElement<Sprites>
+    with SpritesRef {
+  _SpritesProviderElement(super.provider);
+
+  @override
+  String get id => (origin as SpritesProvider).id;
+}
+
 String _$namesHash() => r'a5a204390bc5cbc8246eaac18152a15cc3c51dc1';
 
 /// See also [names].

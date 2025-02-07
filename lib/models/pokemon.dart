@@ -24,11 +24,29 @@ class Pokemon with _$Pokemon {
     @JsonKey(name: 'is_default') required bool isDefault,
     required int order,
     required int weight,
+    required Sprites sprites,
     required PokemonUrl species,
   }) = _Pokemon;
 
   factory Pokemon.fromJson(Map<String, dynamic> json) =>
       _$PokemonFromJson(json);
+}
+
+@freezed
+class Sprites with _$Sprites {
+  const factory Sprites({
+    @JsonKey(name: "front_default") String? frontDefault,
+    @JsonKey(name: "front_female") String? frontFemale,
+    @JsonKey(name: "front_shiny") String? frontShiny,
+    @JsonKey(name: "front_shiny_female") String? frontShinyFemale,
+    @JsonKey(name: "back_default") String? backDefault,
+    @JsonKey(name: "back_female") String? backFemale,
+    @JsonKey(name: "back_shiny") String? backShiny,
+    @JsonKey(name: "back_shiny_female") String? backShinyFemale,
+  }) = _Sprites;
+
+  factory Sprites.fromJson(Map<String, dynamic> json) =>
+      _$SpritesFromJson(json);
 }
 
 @freezed

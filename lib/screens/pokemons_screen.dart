@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokezuka/extensions/context.dart';
 import 'package:pokezuka/providers/pokemon_provider.dart';
 import 'package:pokezuka/widgets/locale_select.dart';
-import 'package:skeletonizer/skeletonizer.dart';
+import 'package:pokezuka/widgets/pokemon_list_tile.dart';
 
 class PokemonsScreen extends ConsumerWidget {
   const PokemonsScreen({super.key});
@@ -12,7 +12,7 @@ class PokemonsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(context.l10n.homeTitle),
+        title: Text(context.l10n.appName),
         actions: [
           IconButton(
               onPressed: () {
@@ -53,6 +53,7 @@ class PokemonsScreen extends ConsumerWidget {
           }
 
           return ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8),
             itemCount: pokemons.length,
             itemBuilder: (context, index) {
               final pokemon = pokemons[index];
@@ -63,51 +64,6 @@ class PokemonsScreen extends ConsumerWidget {
           );
         },
       ),
-    );
-  }
-}
-
-class PokemonListTile extends ConsumerWidget {
-  const PokemonListTile({super.key, required this.name});
-
-  final String name;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-      future: ref.watch(pokemonProvider(name).future),
-      builder: (context, snapshot) {
-        final pokemon = snapshot.data;
-        return Skeletonizer(
-          enabled: snapshot.connectionState != ConnectionState.done ||
-              pokemon == null,
-          child: ListTile(
-            title: PokemonName(name: name),
-            subtitle: Text(pokemon?.id.toString() ?? 'This is a subtitle'),
-          ),
-        );
-      },
-    );
-  }
-}
-
-class PokemonName extends ConsumerWidget {
-  const PokemonName({super.key, required this.name});
-
-  final String name;
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    return FutureBuilder(
-      future: ref.watch(nameProvider(name).future),
-      builder: (context, snapshot) {
-        final name = snapshot.data;
-        return Skeletonizer(
-          enabled:
-              snapshot.connectionState != ConnectionState.done || name == null,
-          child: Text(name ?? 'This is a name'),
-        );
-      },
     );
   }
 }

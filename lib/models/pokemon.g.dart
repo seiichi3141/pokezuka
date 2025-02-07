@@ -27,6 +27,7 @@ _$PokemonImpl _$$PokemonImplFromJson(Map<String, dynamic> json) =>
       isDefault: json['is_default'] as bool,
       order: (json['order'] as num).toInt(),
       weight: (json['weight'] as num).toInt(),
+      sprites: Sprites.fromJson(json['sprites'] as Map<String, dynamic>),
       species: PokemonUrl.fromJson(json['species'] as Map<String, dynamic>),
     );
 
@@ -39,7 +40,32 @@ Map<String, dynamic> _$$PokemonImplToJson(_$PokemonImpl instance) =>
       'is_default': instance.isDefault,
       'order': instance.order,
       'weight': instance.weight,
+      'sprites': instance.sprites,
       'species': instance.species,
+    };
+
+_$SpritesImpl _$$SpritesImplFromJson(Map<String, dynamic> json) =>
+    _$SpritesImpl(
+      frontDefault: json['front_default'] as String?,
+      frontFemale: json['front_female'] as String?,
+      frontShiny: json['front_shiny'] as String?,
+      frontShinyFemale: json['front_shiny_female'] as String?,
+      backDefault: json['back_default'] as String?,
+      backFemale: json['back_female'] as String?,
+      backShiny: json['back_shiny'] as String?,
+      backShinyFemale: json['back_shiny_female'] as String?,
+    );
+
+Map<String, dynamic> _$$SpritesImplToJson(_$SpritesImpl instance) =>
+    <String, dynamic>{
+      'front_default': instance.frontDefault,
+      'front_female': instance.frontFemale,
+      'front_shiny': instance.frontShiny,
+      'front_shiny_female': instance.frontShinyFemale,
+      'back_default': instance.backDefault,
+      'back_female': instance.backFemale,
+      'back_shiny': instance.backShiny,
+      'back_shiny_female': instance.backShinyFemale,
     };
 
 _$SpeciesImpl _$$SpeciesImplFromJson(Map<String, dynamic> json) =>

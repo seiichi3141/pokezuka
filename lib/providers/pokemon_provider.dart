@@ -34,6 +34,13 @@ Future<Species> species(Ref ref, String id) async {
 }
 
 @riverpod
+Future<Sprites> sprites(Ref ref, String id) async {
+  return ref.watch(
+    pokemonProvider(id).future.select((value) async => (await value).sprites),
+  );
+}
+
+@riverpod
 Future<List<Name>> names(Ref ref, String id) async {
   return ref.watch(
     speciesProvider(id).future.select((value) async => (await value).names),

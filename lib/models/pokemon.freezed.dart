@@ -196,6 +196,7 @@ mixin _$Pokemon {
   bool get isDefault => throw _privateConstructorUsedError;
   int get order => throw _privateConstructorUsedError;
   int get weight => throw _privateConstructorUsedError;
+  Sprites get sprites => throw _privateConstructorUsedError;
   PokemonUrl get species => throw _privateConstructorUsedError;
 
   /// Serializes this Pokemon to a JSON map.
@@ -220,8 +221,10 @@ abstract class $PokemonCopyWith<$Res> {
       @JsonKey(name: 'is_default') bool isDefault,
       int order,
       int weight,
+      Sprites sprites,
       PokemonUrl species});
 
+  $SpritesCopyWith<$Res> get sprites;
   $PokemonUrlCopyWith<$Res> get species;
 }
 
@@ -247,6 +250,7 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
     Object? isDefault = null,
     Object? order = null,
     Object? weight = null,
+    Object? sprites = null,
     Object? species = null,
   }) {
     return _then(_value.copyWith(
@@ -278,11 +282,25 @@ class _$PokemonCopyWithImpl<$Res, $Val extends Pokemon>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as Sprites,
       species: null == species
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
               as PokemonUrl,
     ) as $Val);
+  }
+
+  /// Create a copy of Pokemon
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $SpritesCopyWith<$Res> get sprites {
+    return $SpritesCopyWith<$Res>(_value.sprites, (value) {
+      return _then(_value.copyWith(sprites: value) as $Val);
+    });
   }
 
   /// Create a copy of Pokemon
@@ -311,8 +329,11 @@ abstract class _$$PokemonImplCopyWith<$Res> implements $PokemonCopyWith<$Res> {
       @JsonKey(name: 'is_default') bool isDefault,
       int order,
       int weight,
+      Sprites sprites,
       PokemonUrl species});
 
+  @override
+  $SpritesCopyWith<$Res> get sprites;
   @override
   $PokemonUrlCopyWith<$Res> get species;
 }
@@ -337,6 +358,7 @@ class __$$PokemonImplCopyWithImpl<$Res>
     Object? isDefault = null,
     Object? order = null,
     Object? weight = null,
+    Object? sprites = null,
     Object? species = null,
   }) {
     return _then(_$PokemonImpl(
@@ -368,6 +390,10 @@ class __$$PokemonImplCopyWithImpl<$Res>
           ? _value.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as int,
+      sprites: null == sprites
+          ? _value.sprites
+          : sprites // ignore: cast_nullable_to_non_nullable
+              as Sprites,
       species: null == species
           ? _value.species
           : species // ignore: cast_nullable_to_non_nullable
@@ -387,6 +413,7 @@ class _$PokemonImpl implements _Pokemon {
       @JsonKey(name: 'is_default') required this.isDefault,
       required this.order,
       required this.weight,
+      required this.sprites,
       required this.species});
 
   factory _$PokemonImpl.fromJson(Map<String, dynamic> json) =>
@@ -409,11 +436,13 @@ class _$PokemonImpl implements _Pokemon {
   @override
   final int weight;
   @override
+  final Sprites sprites;
+  @override
   final PokemonUrl species;
 
   @override
   String toString() {
-    return 'Pokemon(id: $id, name: $name, baseExperience: $baseExperience, height: $height, isDefault: $isDefault, order: $order, weight: $weight, species: $species)';
+    return 'Pokemon(id: $id, name: $name, baseExperience: $baseExperience, height: $height, isDefault: $isDefault, order: $order, weight: $weight, sprites: $sprites, species: $species)';
   }
 
   @override
@@ -430,13 +459,14 @@ class _$PokemonImpl implements _Pokemon {
                 other.isDefault == isDefault) &&
             (identical(other.order, order) || other.order == order) &&
             (identical(other.weight, weight) || other.weight == weight) &&
+            (identical(other.sprites, sprites) || other.sprites == sprites) &&
             (identical(other.species, species) || other.species == species));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   int get hashCode => Object.hash(runtimeType, id, name, baseExperience, height,
-      isDefault, order, weight, species);
+      isDefault, order, weight, sprites, species);
 
   /// Create a copy of Pokemon
   /// with the given fields replaced by the non-null parameter values.
@@ -463,6 +493,7 @@ abstract class _Pokemon implements Pokemon {
       @JsonKey(name: 'is_default') required final bool isDefault,
       required final int order,
       required final int weight,
+      required final Sprites sprites,
       required final PokemonUrl species}) = _$PokemonImpl;
 
   factory _Pokemon.fromJson(Map<String, dynamic> json) = _$PokemonImpl.fromJson;
@@ -484,6 +515,8 @@ abstract class _Pokemon implements Pokemon {
   @override
   int get weight;
   @override
+  Sprites get sprites;
+  @override
   PokemonUrl get species;
 
   /// Create a copy of Pokemon
@@ -491,6 +524,337 @@ abstract class _Pokemon implements Pokemon {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$PokemonImplCopyWith<_$PokemonImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Sprites _$SpritesFromJson(Map<String, dynamic> json) {
+  return _Sprites.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Sprites {
+  @JsonKey(name: "front_default")
+  String? get frontDefault => throw _privateConstructorUsedError;
+  @JsonKey(name: "front_female")
+  String? get frontFemale => throw _privateConstructorUsedError;
+  @JsonKey(name: "front_shiny")
+  String? get frontShiny => throw _privateConstructorUsedError;
+  @JsonKey(name: "front_shiny_female")
+  String? get frontShinyFemale => throw _privateConstructorUsedError;
+  @JsonKey(name: "back_default")
+  String? get backDefault => throw _privateConstructorUsedError;
+  @JsonKey(name: "back_female")
+  String? get backFemale => throw _privateConstructorUsedError;
+  @JsonKey(name: "back_shiny")
+  String? get backShiny => throw _privateConstructorUsedError;
+  @JsonKey(name: "back_shiny_female")
+  String? get backShinyFemale => throw _privateConstructorUsedError;
+
+  /// Serializes this Sprites to a JSON map.
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  $SpritesCopyWith<Sprites> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SpritesCopyWith<$Res> {
+  factory $SpritesCopyWith(Sprites value, $Res Function(Sprites) then) =
+      _$SpritesCopyWithImpl<$Res, Sprites>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: "front_default") String? frontDefault,
+      @JsonKey(name: "front_female") String? frontFemale,
+      @JsonKey(name: "front_shiny") String? frontShiny,
+      @JsonKey(name: "front_shiny_female") String? frontShinyFemale,
+      @JsonKey(name: "back_default") String? backDefault,
+      @JsonKey(name: "back_female") String? backFemale,
+      @JsonKey(name: "back_shiny") String? backShiny,
+      @JsonKey(name: "back_shiny_female") String? backShinyFemale});
+}
+
+/// @nodoc
+class _$SpritesCopyWithImpl<$Res, $Val extends Sprites>
+    implements $SpritesCopyWith<$Res> {
+  _$SpritesCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? frontDefault = freezed,
+    Object? frontFemale = freezed,
+    Object? frontShiny = freezed,
+    Object? frontShinyFemale = freezed,
+    Object? backDefault = freezed,
+    Object? backFemale = freezed,
+    Object? backShiny = freezed,
+    Object? backShinyFemale = freezed,
+  }) {
+    return _then(_value.copyWith(
+      frontDefault: freezed == frontDefault
+          ? _value.frontDefault
+          : frontDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontFemale: freezed == frontFemale
+          ? _value.frontFemale
+          : frontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShiny: freezed == frontShiny
+          ? _value.frontShiny
+          : frontShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShinyFemale: freezed == frontShinyFemale
+          ? _value.frontShinyFemale
+          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backDefault: freezed == backDefault
+          ? _value.backDefault
+          : backDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backFemale: freezed == backFemale
+          ? _value.backFemale
+          : backFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShiny: freezed == backShiny
+          ? _value.backShiny
+          : backShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShinyFemale: freezed == backShinyFemale
+          ? _value.backShinyFemale
+          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SpritesImplCopyWith<$Res> implements $SpritesCopyWith<$Res> {
+  factory _$$SpritesImplCopyWith(
+          _$SpritesImpl value, $Res Function(_$SpritesImpl) then) =
+      __$$SpritesImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: "front_default") String? frontDefault,
+      @JsonKey(name: "front_female") String? frontFemale,
+      @JsonKey(name: "front_shiny") String? frontShiny,
+      @JsonKey(name: "front_shiny_female") String? frontShinyFemale,
+      @JsonKey(name: "back_default") String? backDefault,
+      @JsonKey(name: "back_female") String? backFemale,
+      @JsonKey(name: "back_shiny") String? backShiny,
+      @JsonKey(name: "back_shiny_female") String? backShinyFemale});
+}
+
+/// @nodoc
+class __$$SpritesImplCopyWithImpl<$Res>
+    extends _$SpritesCopyWithImpl<$Res, _$SpritesImpl>
+    implements _$$SpritesImplCopyWith<$Res> {
+  __$$SpritesImplCopyWithImpl(
+      _$SpritesImpl _value, $Res Function(_$SpritesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? frontDefault = freezed,
+    Object? frontFemale = freezed,
+    Object? frontShiny = freezed,
+    Object? frontShinyFemale = freezed,
+    Object? backDefault = freezed,
+    Object? backFemale = freezed,
+    Object? backShiny = freezed,
+    Object? backShinyFemale = freezed,
+  }) {
+    return _then(_$SpritesImpl(
+      frontDefault: freezed == frontDefault
+          ? _value.frontDefault
+          : frontDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontFemale: freezed == frontFemale
+          ? _value.frontFemale
+          : frontFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShiny: freezed == frontShiny
+          ? _value.frontShiny
+          : frontShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      frontShinyFemale: freezed == frontShinyFemale
+          ? _value.frontShinyFemale
+          : frontShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backDefault: freezed == backDefault
+          ? _value.backDefault
+          : backDefault // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backFemale: freezed == backFemale
+          ? _value.backFemale
+          : backFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShiny: freezed == backShiny
+          ? _value.backShiny
+          : backShiny // ignore: cast_nullable_to_non_nullable
+              as String?,
+      backShinyFemale: freezed == backShinyFemale
+          ? _value.backShinyFemale
+          : backShinyFemale // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SpritesImpl implements _Sprites {
+  const _$SpritesImpl(
+      {@JsonKey(name: "front_default") this.frontDefault,
+      @JsonKey(name: "front_female") this.frontFemale,
+      @JsonKey(name: "front_shiny") this.frontShiny,
+      @JsonKey(name: "front_shiny_female") this.frontShinyFemale,
+      @JsonKey(name: "back_default") this.backDefault,
+      @JsonKey(name: "back_female") this.backFemale,
+      @JsonKey(name: "back_shiny") this.backShiny,
+      @JsonKey(name: "back_shiny_female") this.backShinyFemale});
+
+  factory _$SpritesImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpritesImplFromJson(json);
+
+  @override
+  @JsonKey(name: "front_default")
+  final String? frontDefault;
+  @override
+  @JsonKey(name: "front_female")
+  final String? frontFemale;
+  @override
+  @JsonKey(name: "front_shiny")
+  final String? frontShiny;
+  @override
+  @JsonKey(name: "front_shiny_female")
+  final String? frontShinyFemale;
+  @override
+  @JsonKey(name: "back_default")
+  final String? backDefault;
+  @override
+  @JsonKey(name: "back_female")
+  final String? backFemale;
+  @override
+  @JsonKey(name: "back_shiny")
+  final String? backShiny;
+  @override
+  @JsonKey(name: "back_shiny_female")
+  final String? backShinyFemale;
+
+  @override
+  String toString() {
+    return 'Sprites(frontDefault: $frontDefault, frontFemale: $frontFemale, frontShiny: $frontShiny, frontShinyFemale: $frontShinyFemale, backDefault: $backDefault, backFemale: $backFemale, backShiny: $backShiny, backShinyFemale: $backShinyFemale)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$SpritesImpl &&
+            (identical(other.frontDefault, frontDefault) ||
+                other.frontDefault == frontDefault) &&
+            (identical(other.frontFemale, frontFemale) ||
+                other.frontFemale == frontFemale) &&
+            (identical(other.frontShiny, frontShiny) ||
+                other.frontShiny == frontShiny) &&
+            (identical(other.frontShinyFemale, frontShinyFemale) ||
+                other.frontShinyFemale == frontShinyFemale) &&
+            (identical(other.backDefault, backDefault) ||
+                other.backDefault == backDefault) &&
+            (identical(other.backFemale, backFemale) ||
+                other.backFemale == backFemale) &&
+            (identical(other.backShiny, backShiny) ||
+                other.backShiny == backShiny) &&
+            (identical(other.backShinyFemale, backShinyFemale) ||
+                other.backShinyFemale == backShinyFemale));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      frontDefault,
+      frontFemale,
+      frontShiny,
+      frontShinyFemale,
+      backDefault,
+      backFemale,
+      backShiny,
+      backShinyFemale);
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SpritesImplCopyWith<_$SpritesImpl> get copyWith =>
+      __$$SpritesImplCopyWithImpl<_$SpritesImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SpritesImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Sprites implements Sprites {
+  const factory _Sprites(
+          {@JsonKey(name: "front_default") final String? frontDefault,
+          @JsonKey(name: "front_female") final String? frontFemale,
+          @JsonKey(name: "front_shiny") final String? frontShiny,
+          @JsonKey(name: "front_shiny_female") final String? frontShinyFemale,
+          @JsonKey(name: "back_default") final String? backDefault,
+          @JsonKey(name: "back_female") final String? backFemale,
+          @JsonKey(name: "back_shiny") final String? backShiny,
+          @JsonKey(name: "back_shiny_female") final String? backShinyFemale}) =
+      _$SpritesImpl;
+
+  factory _Sprites.fromJson(Map<String, dynamic> json) = _$SpritesImpl.fromJson;
+
+  @override
+  @JsonKey(name: "front_default")
+  String? get frontDefault;
+  @override
+  @JsonKey(name: "front_female")
+  String? get frontFemale;
+  @override
+  @JsonKey(name: "front_shiny")
+  String? get frontShiny;
+  @override
+  @JsonKey(name: "front_shiny_female")
+  String? get frontShinyFemale;
+  @override
+  @JsonKey(name: "back_default")
+  String? get backDefault;
+  @override
+  @JsonKey(name: "back_female")
+  String? get backFemale;
+  @override
+  @JsonKey(name: "back_shiny")
+  String? get backShiny;
+  @override
+  @JsonKey(name: "back_shiny_female")
+  String? get backShinyFemale;
+
+  /// Create a copy of Sprites
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$SpritesImplCopyWith<_$SpritesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

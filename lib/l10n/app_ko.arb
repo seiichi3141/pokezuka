@@ -1,18 +1,18 @@
 {
-    "@@locale": "en",
-    "localeDisplayName": "English",
+    "@@locale": "ko",
+    "localeDisplayName": "한국어",
     "@localeDisplayName": {
         "description": "The display name of the locale"
     },
-    "appName": "Pokédex",
+    "appName": "포켓몬 도감",
     "@appName": {
         "description": "The title of the Application name"
     },
-    "settings": "Settings",
+    "settings": "설정",
     "@settings": {
         "description": "The title of the settings page"
     },
-    "close": "Close",
+    "close": "닫기",
     "@close": {
         "description": "The text of the close button"
     }
