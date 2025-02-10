@@ -13,7 +13,7 @@ class PokemonListTile extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return SizedBox(
-      height: 140,
+      height: 220,
       child: FutureBuilder(
         future: ref.watch(pokemonProvider(name).future),
         builder: (context, snapshot) {
@@ -28,21 +28,22 @@ class PokemonListTile extends ConsumerWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
+                  vertical: 8,
+                  horizontal: 12,
                 ),
                 child: Stack(
                   children: [
-                    Positioned(
-                      left: 60,
-                      top: 0,
-                      bottom: 0,
-                      child: SizedBox(
-                        width: 350,
-                        child: PokemonImage(name: name),
+                    Positioned.fill(
+                      child: Center(
+                        child: SizedBox(
+                          width: 180,
+                          height: 180,
+                          child: PokemonImage(name: name),
+                        ),
                       ),
                     ),
                     Positioned(
-                      top: 4,
+                      top: 0,
                       left: 0,
                       child: PokemonIndex(name: name),
                     ),
@@ -83,15 +84,39 @@ class PokemonIndex extends ConsumerWidget {
         return Skeletonizer(
           enabled:
               snapshot.connectionState != ConnectionState.done || index == null,
-          child: Text(
-            index?.toString() ?? 'Index',
-            style: TextStyle(
-              fontSize: 70,
-              // fontFamily: GoogleFonts.merriweather().fontFamily,
-              fontFamily: GoogleFonts.alfaSlabOne().fontFamily,
-              color: Colors.grey[400],
-              height: 1.2,
-            ),
+          child: Stack(
+            children: [
+              Text(
+                index?.toString().padLeft(3, '0') ?? 'Index',
+                style: TextStyle(
+                  fontSize: 52,
+                  fontFamily: GoogleFonts.alfaSlabOne().fontFamily,
+                  height: 1.2,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 8
+                    ..strokeCap = StrokeCap.round
+                    ..strokeJoin = StrokeJoin.round
+                    ..color = Colors.white,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 2,
+                      color: Colors.black.withValues(alpha: 0.8),
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                index?.toString().padLeft(3, '0') ?? 'Index',
+                style: TextStyle(
+                  fontSize: 52,
+                  fontFamily: GoogleFonts.alfaSlabOne().fontFamily,
+                  color: Colors.grey[400],
+                  height: 1.2,
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -118,6 +143,7 @@ class PokemonImage extends ConsumerWidget {
               : CachedNetworkImage(
                   imageUrl: sprites.frontDefault!,
                   fit: BoxFit.fitWidth,
+                  filterQuality: FilterQuality.none,
                   alignment: Alignment(0.5, -0.1),
                 ),
         );
@@ -141,15 +167,42 @@ class PokemonName extends ConsumerWidget {
         return Skeletonizer(
           enabled:
               snapshot.connectionState != ConnectionState.done || name == null,
-          child: Text(
-            name ?? 'Name',
-            style: TextStyle(
-              fontSize: 48,
-              fontFamily: local != 'ko'
-                  ? GoogleFonts.delaGothicOne().fontFamily
-                  : GoogleFonts.blackHanSans().fontFamily,
-              height: 1.1,
-            ),
+          child: Stack(
+            children: [
+              Text(
+                name ?? 'Name',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontFamily: local != 'ko'
+                      ? GoogleFonts.delaGothicOne().fontFamily
+                      : GoogleFonts.blackHanSans().fontFamily,
+                  height: 1.1,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 8
+                    ..strokeCap = StrokeCap.round
+                    ..strokeJoin = StrokeJoin.round
+                    ..color = Colors.white,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 2,
+                      color: Colors.black.withValues(alpha: 0.8),
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                name ?? 'Name',
+                style: TextStyle(
+                  fontSize: 48,
+                  fontFamily: local != 'ko'
+                      ? GoogleFonts.delaGothicOne().fontFamily
+                      : GoogleFonts.blackHanSans().fontFamily,
+                  height: 1.1,
+                ),
+              ),
+            ],
           ),
         );
       },
@@ -171,16 +224,43 @@ class PokemonGenus extends ConsumerWidget {
         final genus = snapshot.data;
         return Skeletonizer(
           enabled: snapshot.connectionState != ConnectionState.done,
-          child: Text(
-            genus ?? 'Genus',
-            style: TextStyle(
-              fontSize: 24,
-              color: Colors.grey[600],
-              fontFamily: local != 'ko'
-                  ? GoogleFonts.delaGothicOne().fontFamily
-                  : GoogleFonts.blackHanSans().fontFamily,
-              height: 1.1,
-            ),
+          child: Stack(
+            children: [
+              Text(
+                genus ?? 'Genus',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontFamily: local != 'ko'
+                      ? GoogleFonts.delaGothicOne().fontFamily
+                      : GoogleFonts.blackHanSans().fontFamily,
+                  height: 1.1,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 4
+                    ..strokeCap = StrokeCap.round
+                    ..strokeJoin = StrokeJoin.round
+                    ..color = Colors.white,
+                  shadows: [
+                    Shadow(
+                      blurRadius: 2,
+                      color: Colors.black.withValues(alpha: 0.8),
+                      offset: Offset(0, 2),
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                genus ?? 'Genus',
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.grey[600],
+                  fontFamily: local != 'ko'
+                      ? GoogleFonts.delaGothicOne().fontFamily
+                      : GoogleFonts.blackHanSans().fontFamily,
+                  height: 1.1,
+                ),
+              ),
+            ],
           ),
         );
       },
